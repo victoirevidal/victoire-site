@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Victoire Vidal — Paris Cultural Insider</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F6F1E9;
+    --dark: #1C1A16;
+    --warm: #C9A97F;
+    --accent: #8B6F47;
+    --muted: #6B6560;
+    --light-warm: #EDE8DC;
+    --border: rgba(28,26,22,0.1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--dark);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 22px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(246,241,233,0.93);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--dark);
+    text-decoration: none;
+  }
+
+  .nav-links { display: flex; gap: 44px; list-style: none; }
+
+  .nav-links a {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--dark); }
+
+  .nav-cta {
+    color: var(--cream) !important;
+    background: var(--dark);
+    padding: 10px 22px !important;
+  }
+
+  .nav-cta:hover { background: var(--accent); color: var(--cream) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 55% 45%;
+    padding-top: 72px;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 72px 80px 80px;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 28px;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(56px, 5.5vw, 88px);
+    font-weight: 300;
+    line-height: 1.0;
+    color: var(--dark);
+    margin-bottom: 4px;
+  }
+
+  .hero-title-italic {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(56px, 5.5vw, 88px);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.0;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 32px;
+  }
+
+  .hero-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--warm);
+    margin-bottom: 28px;
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--muted);
+    max-width: 460px;
+    margin-bottom: 52px;
+  }
+
+  .hero-actions { display: flex; gap: 20px; align-items: center; }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--dark);
+    color: var(--cream);
+    padding: 16px 32px;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.3s;
+  }
+
+  .btn-primary:hover { background: var(--accent); }
+
+  .btn-secondary {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 3px;
+    transition: color 0.3s;
+  }
+
+  .btn-secondary:hover { color: var(--dark); }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: sepia(10%) brightness(0.97);
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, var(--cream) 0%, transparent 15%),
+                linear-gradient(to top, var(--cream) 0%, transparent 10%);
+  }
+
+  .hero-badge {
+    position: absolute;
+    bottom: 48px;
+    left: -20px;
+    background: var(--dark);
+    color: var(--cream);
+    padding: 20px 32px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 260px;
+  }
+
+  /* ABOUT */
+  .about {
+    padding: 112px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1.8fr;
+    gap: 100px;
+    align-items: start;
+    border-top: 1px solid var(--border);
+  }
+
+  .about-left { position: sticky; top: 100px; }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .about-left h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px;
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--dark);
+  }
+
+  .about-left h2 em { font-style: italic; color: var(--accent); }
+
+  .about-right p {
+    font-size: 16px;
+    line-height: 1.95;
+    color: var(--muted);
+    margin-bottom: 22px;
+  }
+
+  .about-right p strong { color: var(--dark); font-weight: 400; }
+
+  .qualities {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+  }
+
+  .quality {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .quality::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: var(--warm);
+    border-radius: 50%;
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+
+  /* EXPERIENCES */
+  .experiences {
+    padding: 112px 80px;
+    background: var(--dark);
+  }
+
+  .exp-header { margin-bottom: 64px; }
+
+  .exp-header .section-label { color: var(--warm); }
+
+  .exp-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 4vw, 60px);
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.1;
+    max-width: 560px;
+  }
+
+  .exp-header h2 em { font-style: italic; color: var(--warm); }
+
+  .exp-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+
+  .exp-card {
+    padding: 52px 48px;
+    border: 1px solid rgba(255,255,255,0.07);
+    background: rgba(255,255,255,0.03);
+    transition: background 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .exp-card:hover { background: rgba(201,169,127,0.08); }
+  .exp-full { grid-column: 1 / -1; }
+
+  .exp-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 88px;
+    font-weight: 300;
+    color: rgba(201,169,127,0.1);
+    position: absolute;
+    top: 16px;
+    right: 36px;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .exp-tag {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 18px;
+    display: block;
+  }
+
+  .exp-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  .exp-desc {
+    font-size: 14px;
+    line-height: 1.85;
+    color: rgba(246,241,233,0.52);
+    margin-bottom: 24px;
+    max-width: 480px;
+  }
+
+  .exp-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  .exp-tag-pill {
+    font-size: 11px;
+    color: rgba(246,241,233,0.38);
+    border: 1px solid rgba(246,241,233,0.1);
+    padding: 4px 12px;
+    letter-spacing: 0.05em;
+  }
+
+  .exp-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 300;
+    color: var(--warm);
+    line-height: 1;
+  }
+
+  .exp-price-note {
+    font-size: 12px;
+    color: rgba(246,241,233,0.28);
+    margin-top: 5px;
+  }
+
+  /* TESTIMONIAL */
+  .testimonial {
+    padding: 112px 80px;
+    background: var(--light-warm);
+  }
+
+  .testimonial-inner { max-width: 800px; }
+
+  .quote-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 120px;
+    color: var(--warm);
+    opacity: 0.22;
+    line-height: 0.7;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(26px, 3vw, 40px);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--dark);
+    margin-bottom: 44px;
+  }
+
+  .quote-attr { display: flex; align-items: center; gap: 20px; }
+  .quote-line { width: 48px; height: 1px; background: var(--warm); }
+
+  .quote-author {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* CONTACT */
+  .contact {
+    padding: 112px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 112px;
+    align-items: start;
+  }
+
+  .contact-left h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 3.5vw, 54px);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 28px;
+    color: var(--dark);
+  }
+
+  .contact-left h2 em { font-style: italic; color: var(--accent); }
+
+  .contact-left p {
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .calendly-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 4px;
+    transition: opacity 0.3s;
+  }
+
+  .calendly-link:hover { opacity: 0.6; }
+
+  .form-field { margin-bottom: 26px; }
+
+  .form-label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .form-input,
+  .form-textarea,
+  .form-select {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(28,26,22,0.18);
+    padding: 10px 0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--dark);
+    outline: none;
+    transition: border-color 0.3s;
+    -webkit-appearance: none;
+  }
+
+  .form-input::placeholder,
+  .form-textarea::placeholder { color: rgba(107,101,96,0.45); }
+
+  .form-input:focus,
+  .form-textarea:focus,
+  .form-select:focus { border-color: var(--accent); }
+
+  .form-textarea { resize: none; height: 90px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--dark);
+    color: var(--cream);
+    border: none;
+    padding: 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 4px;
+  }
+
+  .form-submit:hover { background: var(--accent); }
+
+  footer {
+    padding: 40px 80px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: var(--dark);
+  }
+
+  .footer-contact { font-size: 12px; color: var(--muted); }
+  .footer-contact a { color: var(--muted); text-decoration: none; transition: color 0.3s; }
+  .footer-contact a:hover { color: var(--dark); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-left > * { animation: fadeUp 0.9s ease forwards; opacity: 0; }
+  .hero-eyebrow { animation-delay: 0.1s; }
+  .hero-title { animation-delay: 0.2s; }
+  .hero-title-italic { animation-delay: 0.3s; }
+  .hero-tagline { animation-delay: 0.38s; }
+  .hero-subtitle { animation-delay: 0.46s; }
+  .hero-actions { animation-delay: 0.55s; }
+
+  @media (max-width: 960px) {
+    nav { padding: 18px 24px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 100px 28px 56px; }
+    .hero-right { height: 70vw; }
+    .hero-badge { left: 16px; }
+    .about { grid-template-columns: 1fr; padding: 72px 28px; gap: 40px; }
+    .about-left { position: static; }
+    .qualities { grid-template-columns: 1fr; }
+    .experiences { padding: 72px 28px; }
+    .exp-grid { grid-template-columns: 1fr; }
+    .exp-full { grid-column: 1; }
+    .testimonial { padding: 72px 28px; }
+    .contact { grid-template-columns: 1fr; padding: 72px 28px; gap: 56px; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { padding: 32px 24px; flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Victoire Vidal</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experiences">Experiences</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-cta">Book a call</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Paris · Cultural Insider & Private Host</p>
+    <h1 class="hero-title">Live like</h1>
+    <span class="hero-title-italic">locals do.</span>
+    <p class="hero-tagline">A Parisian perspective — thoughtfully shared.</p>
+    <p class="hero-subtitle">
+      Born and raised in Paris, I offer refined, deeply personal experiences for international guests seeking more than a tour — an entry into the true rhythm of the city.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Book a discovery call →</a>
+      <a href="#experiences" class="btn-secondary">See experiences</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=900&q=80" alt="Paris" />
+    <div class="hero-overlay"></div>
+    <div class="hero-badge">"I offer access not only to places — but to atmosphere, nuance and rhythm."</div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-left">
+    <span class="section-label">Who I am</span>
+    <h2>Paris, as it<br>is <em>truly lived.</em></h2>
+  </div>
+  <div class="about-right">
+    <p>I've spent 33 years learning this city — its rhythms, its best-kept secrets, its people. My approach is intuitive and entirely bespoke. I share Paris as it is lived: through atmosphere, encounters, aesthetics, conversation and carefully curated moments.</p>
+    <p>Each day unfolds according to my clients' pace, interests and energy — <strong>effortless, fluid and thoughtfully designed.</strong></p>
+    <p>Fluent in English, with a background in project management and professional cooking, I combine rigorous organization with warmth, spontaneity and an instinct for atmosphere. Whether you're travelling solo, with family, or with someone who needs extra care — I make sure your time in Paris feels entirely yours.</p>
+    <div class="qualities">
+      <div class="quality">Born & raised Parisian</div>
+      <div class="quality">Fluent English</div>
+      <div class="quality">Former professional chef</div>
+      <div class="quality">Strong logistical expertise</div>
+      <div class="quality">Discreet & adaptable presence</div>
+      <div class="quality">Accessibility experience</div>
+    </div>
+  </div>
+</section>
+
+<section class="experiences" id="experiences">
+  <div class="exp-header">
+    <span class="section-label">What I offer</span>
+    <h2>Experiences crafted<br>around <em>you.</em></h2>
+  </div>
+  <div class="exp-grid">
+
+    <div class="exp-card">
+      <span class="exp-num">01</span>
+      <span class="exp-tag">Half or full day · Paris</span>
+      <h3 class="exp-title">Art & Aesthetic Walks</h3>
+      <p class="exp-desc">Exploring Paris through its creative pulse — Saint-Ouen flea market, Le Marais, Saint-Germain, Avenue Matignon galleries, Palais-Royal. Curated immersions into the living art scene, shaped by deep aesthetic familiarity with the city.</p>
+      <div class="exp-tags">
+        <span class="exp-tag-pill">Saint-Ouen flea market</span>
+        <span class="exp-tag-pill">Le Marais</span>
+        <span class="exp-tag-pill">Gallery districts</span>
+        <span class="exp-tag-pill">Emerging artists</span>
+      </div>
+      <div class="exp-price">from €300</div>
+      <div class="exp-price-note">per group · up to 4 people</div>
+    </div>
+
+    <div class="exp-card">
+      <span class="exp-num">02</span>
+      <span class="exp-tag">Half or full day · Paris</span>
+      <h3 class="exp-title">The Paris of Parisians</h3>
+      <p class="exp-desc">A "day in the life" experience — elegant cafés, hidden courtyards, artisan workshops, local food markets, independent boutiques. Not just seeing Paris, but moving through it with ease and insider understanding.</p>
+      <div class="exp-tags">
+        <span class="exp-tag-pill">Local markets</span>
+        <span class="exp-tag-pill">Hidden courtyards</span>
+        <span class="exp-tag-pill">Artisan workshops</span>
+        <span class="exp-tag-pill">Neighbourhood walks</span>
+      </div>
+      <div class="exp-price">from €300</div>
+      <div class="exp-price-note">per group · up to 4 people</div>
+    </div>
+
+    <div class="exp-card">
+      <span class="exp-num">03</span>
+      <span class="exp-tag">Half or full day · Paris</span>
+      <h3 class="exp-title">Private Hosting</h3>
+      <p class="exp-desc">For guests who value presence as much as knowledge. Discreet, attentive accompaniment — restaurant curation, transport coordination, museum booking, flexible pacing. Particularly suited for guests seeking gentle pacing, meaningful human connection and effortless organization.</p>
+      <div class="exp-tags">
+        <span class="exp-tag-pill">Restaurant curation</span>
+        <span class="exp-tag-pill">Transport coordination</span>
+        <span class="exp-tag-pill">Accessibility welcome</span>
+        <span class="exp-tag-pill">Flexible pacing</span>
+      </div>
+      <div class="exp-price">from €400</div>
+      <div class="exp-price-note">per group · up to 4 people</div>
+    </div>
+
+    <div class="exp-card">
+      <span class="exp-num">04</span>
+      <span class="exp-tag">By arrangement · Paris</span>
+      <h3 class="exp-title">Private Market-to-Table</h3>
+      <p class="exp-desc">As a former professional chef, I offer private in-home dining experiences. Join me at a local market to select seasonal ingredients, then prepare a bespoke lunch or dinner together — or simply enjoy a thoughtfully prepared meal in an intimate setting.</p>
+      <div class="exp-tags">
+        <span class="exp-tag-pill">Market visit</span>
+        <span class="exp-tag-pill">Seasonal cooking</span>
+        <span class="exp-tag-pill">Private dining</span>
+      </div>
+      <div class="exp-price">On request</div>
+      <div class="exp-price-note">tailored to your group</div>
+    </div>
+
+    <div class="exp-card exp-full">
+      <span class="exp-num">05</span>
+      <span class="exp-tag">Multi-day · South of France & beyond</span>
+      <h3 class="exp-title">Regional Journeys</h3>
+      <p class="exp-desc">With roots in the South of France and a background in project management, I design and oversee elegant, seamless regional experiences. From sourcing accommodations to coordinating drivers, restaurants and cultural visits — logistical fluidity and aesthetic coherence, throughout.</p>
+      <div class="exp-tags">
+        <span class="exp-tag-pill">Montpellier</span>
+        <span class="exp-tag-pill">Avignon</span>
+        <span class="exp-tag-pill">Languedoc</span>
+        <span class="exp-tag-pill">Vineyard encounters</span>
+        <span class="exp-tag-pill">Full logistics</span>
+        <span class="exp-tag-pill">Group travel</span>
+      </div>
+      <div class="exp-price">from €500 / day</div>
+      <div class="exp-price-note">tailored quote · minimum 2 days</div>
+    </div>
+
+  </div>
+</section>
+
+<section class="testimonial">
+  <div class="testimonial-inner">
+    <span class="section-label">A guest's words</span>
+    <span class="quote-mark">"</span>
+    <blockquote class="quote-text">Victoire saved our holiday. She adapted everything to my pace, never once making me feel like a burden. Paris felt like it was made for us.</blockquote>
+    <div class="quote-attr">
+      <div class="quote-line"></div>
+      <span class="quote-author">Maria — New York</span>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-left">
+    <span class="section-label">Get in touch</span>
+    <h2>Tell me about<br>your <em>trip.</em></h2>
+    <p>Describe what you're looking for — your dates, your group, what makes you curious about Paris. I'll get back to you within 24 hours with ideas and a tailored proposal.</p>
+    <p>Prefer to talk? Book a free 15-minute call and we'll figure it out together.</p>
+    <a href="https://calendly.com" target="_blank" class="calendly-link">Book a free 15-min call →</a>
+  </div>
+  <div class="contact-right">
+    <form>
+      <div class="form-row">
+        <div class="form-field">
+          <label class="form-label">Your name</label>
+          <input class="form-input" type="text" placeholder="Jane Smith" />
+        </div>
+        <div class="form-field">
+          <label class="form-label">Email</label>
+          <input class="form-input" type="email" placeholder="jane@email.com" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label class="form-label">Dates in Paris</label>
+          <input class="form-input" type="text" placeholder="e.g. June 10–17" />
+        </div>
+        <div class="form-field">
+          <label class="form-label">Group size</label>
+          <select class="form-select">
+            <option value="">Select...</option>
+            <option>Solo</option>
+            <option>2 people</option>
+            <option>3–4 people</option>
+            <option>5+ people</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Experience type</label>
+        <select class="form-select">
+          <option value="">Select...</option>
+          <option>Art & Aesthetic Walks</option>
+          <option>The Paris of Parisians</option>
+          <option>Private Hosting</option>
+          <option>Market-to-Table Dining</option>
+          <option>Regional Journey</option>
+          <option>Not sure yet — let's talk</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Tell me about your trip</label>
+        <textarea class="form-textarea" placeholder="Any specific interests, accessibility needs, or ideas you have in mind?"></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send my request →</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Victoire Vidal — Paris</div>
+  <div class="footer-contact">
+    <a href="mailto:victoiremsvidal@gmail.com">victoiremsvidal@gmail.com</a>
+    &nbsp;·&nbsp;
+    <a href="tel:+33627701486">+33 6 27 70 14 86</a>
+  </div>
+</footer>
+
+</body>
+</html>
