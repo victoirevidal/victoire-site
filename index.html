@@ -392,6 +392,31 @@
     margin-top: 5px;
   }
 
+  .exp-book-btn {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 12px 24px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cream);
+    border: 1px solid rgba(201,169,127,0.4);
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s, color 0.3s;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    text-decoration: none;
+  }
+
+  .exp-book-btn:hover {
+    background: rgba(201,169,127,0.15);
+    border-color: var(--warm);
+    color: var(--warm);
+  }
+
+  .exp-card { cursor: pointer; }
+
   /* HOW IT WORKS */
   .how {
     padding: 112px 80px;
@@ -797,6 +822,7 @@
       </div>
       <div class="exp-price">On request</div>
       <div class="exp-price-note">tailored quote · contact me</div>
+      <a class="exp-book-btn" onclick="bookExperience('Art &amp; Aesthetic Walks')">Book this experience →</a>
     </div>
 
     <div class="exp-card">
@@ -812,6 +838,7 @@
       </div>
       <div class="exp-price">On request</div>
       <div class="exp-price-note">tailored quote · contact me</div>
+      <a class="exp-book-btn" onclick="bookExperience('The Paris of Parisians')">Book this experience →</a>
     </div>
 
     <div class="exp-card">
@@ -827,6 +854,7 @@
       </div>
       <div class="exp-price">On request</div>
       <div class="exp-price-note">tailored quote · contact me</div>
+      <a class="exp-book-btn" onclick="bookExperience('Private Hosting')">Book this experience →</a>
     </div>
 
     <div class="exp-card">
@@ -841,6 +869,7 @@
       </div>
       <div class="exp-price">On request</div>
       <div class="exp-price-note">tailored to your group</div>
+      <a class="exp-book-btn" onclick="bookExperience('Market-to-Table Dining')">Book this experience →</a>
     </div>
 
     <div class="exp-card exp-full">
@@ -858,6 +887,7 @@
       </div>
       <div class="exp-price">On request</div>
       <div class="exp-price-note">tailored quote · tell me about your project</div>
+      <a class="exp-book-btn" onclick="bookExperience('Regional Journey (South of France)')">Book this experience →</a>
     </div>
 
   </div>
@@ -915,21 +945,21 @@
       <div class="form-row">
         <div class="form-field">
           <label class="form-label">Your name</label>
-          <input class="form-input" type="text" placeholder="Jane Smith" />
+          <input class="form-input" type="text" name="name" placeholder="Jane Smith" required />
         </div>
         <div class="form-field">
           <label class="form-label">Email</label>
-          <input class="form-input" type="email" placeholder="jane@email.com" />
+          <input class="form-input" type="email" name="email" placeholder="jane@email.com" required />
         </div>
       </div>
       <div class="form-row">
         <div class="form-field">
           <label class="form-label">Dates in Paris</label>
-          <input class="form-input" type="text" placeholder="e.g. June 10–17" />
+          <input class="form-input" type="text" name="dates" placeholder="e.g. June 10–17" />
         </div>
         <div class="form-field">
           <label class="form-label">Group size</label>
-          <select class="form-select">
+          <select class="form-select" name="group_size">
             <option value="">Select...</option>
             <option>Solo</option>
             <option>2 people</option>
@@ -940,9 +970,9 @@
       </div>
       <div class="form-field">
         <label class="form-label">Experience type</label>
-        <select class="form-select">
+        <select class="form-select" name="experience_type">
           <option value="">Select...</option>
-          <option>Art & Aesthetic Walks</option>
+          <option>Art &amp; Aesthetic Walks</option>
           <option>The Paris of Parisians</option>
           <option>Private Hosting</option>
           <option>Market-to-Table Dining</option>
@@ -952,11 +982,11 @@
       </div>
       <div class="form-field">
         <label class="form-label">What kind of day are you dreaming of?</label>
-        <textarea class="form-textarea" placeholder="e.g. Getting lost in art galleries, finding the best croissant in Paris, exploring a neighbourhood like a local, a slow morning at the market..."></textarea>
+        <textarea class="form-textarea" name="message" placeholder="e.g. Getting lost in art galleries, finding the best croissant in Paris, exploring a neighbourhood like a local, a slow morning at the market..."></textarea>
       </div>
       <div class="form-field">
         <label class="form-label">Anything I should know? (accessibility, dietary needs, special occasions...)</label>
-        <input class="form-input" type="text" placeholder="Optional — but the more I know, the better I can prepare." />
+        <input class="form-input" type="text" name="additional_info" placeholder="Optional — but the more I know, the better I can prepare." />
       </div>
       <button type="submit" class="form-submit">Send my request →</button>
     </form>
@@ -988,6 +1018,26 @@
 
   </div>
 </section>
+
+<script>
+function bookExperience(experienceType) {
+  var contactSection = document.getElementById('contact');
+  var select = document.querySelector('select[name="experience_type"]');
+  if (select) {
+    for (var i = 0; i < select.options.length; i++) {
+      if (select.options[i].text === experienceType) {
+        select.selectedIndex = i;
+        break;
+      }
+    }
+  }
+  contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  setTimeout(function() {
+    var nameInput = document.querySelector('input[name="name"]');
+    if (nameInput) nameInput.focus();
+  }, 700);
+}
+</script>
 
 <footer>
   <div class="footer-logo">Victoire Vidal — Paris</div>
