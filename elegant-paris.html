@@ -66,10 +66,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:22px 60px;display:fl
 .youll2 .t{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(22px,2.1vw,30px);color:var(--cream);line-height:1.4;}
 .glimpse{margin-top:76px;}
 .glimpse .section-label{margin-bottom:24px;}
-.gallery{columns:3;column-gap:14px;}
-.gallery.g2{columns:2;}
-.gallery img{width:100%;height:auto;display:block;margin-bottom:14px;break-inside:avoid;}
-.gallery .ph{width:100%;aspect-ratio:3/4;margin-bottom:14px;break-inside:avoid;display:flex;align-items:flex-end;padding:16px;color:rgba(246,241,233,0.7);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;}
+.gallery{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:flex-start;}
+.gallery img{height:280px;width:auto;max-width:100%;display:block;}
+.gallery .ph{height:280px;width:210px;max-width:100%;display:flex;align-items:flex-end;padding:16px;color:rgba(246,241,233,0.7);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;}
 .g-warm{background:linear-gradient(150deg,#c9a97f,#6f5836);}
 .g-mid{background:linear-gradient(150deg,#a9895c,#3a3225);}
 .g-deep{background:linear-gradient(150deg,#4a4336,#1c1a16);}
@@ -120,7 +119,7 @@ nav{padding:18px 24px;}.nav-links{display:none;}
 .cta{padding:64px 28px;}.more-walks{padding:64px 28px;}.more-grid{grid-template-columns:1fr;}
 footer{padding:32px 24px;flex-direction:column;gap:12px;text-align:center;}
 }
-@media(max-width:820px){.gallery,.gallery.g2{columns:1;}}</style>
+@media(max-width:820px){.gallery img{height:auto;width:100%;}.gallery .ph{height:220px;width:100%;}}</style>
 </head>
 <body>
 
@@ -205,7 +204,7 @@ footer{padding:32px 24px;flex-direction:column;gap:12px;text-align:center;}
   <span class="section-label">The other walks</span>
   <div class="more-grid">
     <a class="more-card" href="paris-through-local-eyes.html">
-      <div class="more-thumb thumb-local"></div>
+      <div class="more-thumb" style="background:url('images/localeyes-hero.jpg') center/cover;"></div>
       <div class="more-body"><span class="mc-eyebrow">Everyday Paris</span><div class="mc-title">Paris Through Local Eyes</div><span class="mc-arrow">Discover this walk →</span></div>
     </a>
     <a class="more-card" href="paris-under-occupation.html">
