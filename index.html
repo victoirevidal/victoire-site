@@ -18,6 +18,7 @@
 <meta property="og:title" content="Victoire Vidal — Private Guide & Cultural Insider in Paris" />
 <meta property="og:description" content="Experience Paris the way locals do. Deeply personal, entirely bespoke guided experiences with a born-and-raised Parisian." />
 <meta property="og:url" content="https://victoirevidal.com" />
+<meta property="og:image" content="https://victoirevidal.com/images/paris-hero.jpg" />
 <meta property="og:locale" content="en_US" />
 
 <!-- Twitter Card -->
@@ -26,6 +27,54 @@
 <meta name="twitter:description" content="Experience Paris the way locals do. Deeply personal, entirely bespoke guided experiences." />
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://victoirevidal.com/#victoire",
+      "name": "Victoire Vidal",
+      "jobTitle": "Private guide and cultural insider in Paris",
+      "url": "https://victoirevidal.com",
+      "image": "https://victoirevidal.com/images/victoire-profil.jpg",
+      "description": "Born and raised Parisian offering deeply personal private guided experiences in Paris and the South of France.",
+      "knowsLanguage": ["English", "French"],
+      "sameAs": ["https://www.instagram.com/victoire.paris.guide"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://victoirevidal.com/#website",
+      "url": "https://victoirevidal.com",
+      "name": "Victoire Vidal — Private Guide in Paris",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://victoirevidal.com/#service",
+      "name": "Victoire Vidal — Private Guide & Cultural Insider in Paris",
+      "url": "https://victoirevidal.com",
+      "image": "https://victoirevidal.com/images/paris-hero.jpg",
+      "description": "Refined, deeply personal private guided experiences in Paris — art walks, local immersions, private hosting and multi-day journeys through the South of France. Tailored for international travellers.",
+      "provider": { "@id": "https://victoirevidal.com/#victoire" },
+      "areaServed": [{ "@type": "City", "name": "Paris" }, { "@type": "Place", "name": "South of France" }],
+      "availableLanguage": ["English", "French"],
+      "email": "guide@victoirevidal.com",
+      "sameAs": ["https://www.instagram.com/victoire.paris.guide"]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://victoirevidal.com/#faq",
+      "mainEntity": [
+        { "@type": "Question", "name": "Do you speak English?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, fluently. All my experiences can be conducted entirely in English — and I'm used to working with international guests." } },
+        { "@type": "Question", "name": "Can you accommodate guests with mobility needs?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. My first guiding experience was with a guest living with Parkinson's. I adapt completely to every pace, every need — no question is too specific." } },
+        { "@type": "Question", "name": "How far in advance should I book?", "acceptedAnswer": { "@type": "Answer", "text": "Ideally 1–2 weeks ahead. This gives me the time to design something truly tailored to you — rather than something generic." } },
+        { "@type": "Question", "name": "Do you work with travel agencies and concierges?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. If you're a concierge or travel agent looking for a trusted Paris partner for your clients, get in touch directly — I'd love to discuss how we can work together." } }
+      ]
+    }
+  ]
+}
+</script>
 <style>
   :root {
     --cream: #F6F1E9;
@@ -51,7 +100,7 @@
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
-    z-index: 100;
+    z-index: 200;
     padding: 22px 60px;
     display: flex;
     justify-content: space-between;
@@ -90,6 +139,29 @@
   }
 
   .nav-cta:hover { background: var(--accent); color: var(--cream) !important; }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 34px; height: 34px;
+    background: none; border: none; cursor: pointer;
+    padding: 0;
+    z-index: 130;
+  }
+  .nav-toggle span {
+    display: block; width: 24px; height: 2px;
+    background: var(--dark); margin: 0 auto;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .nav-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(20,18,15,0.4);
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.35s; z-index: 110;
+  }
+  body.nav-open .nav-backdrop { opacity: 1; pointer-events: auto; }
 
   /* HERO */
   .hero {
@@ -760,7 +832,34 @@
 
   @media (max-width: 960px) {
     nav { padding: 18px 24px; }
-    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    .nav-links {
+      position: fixed; top: 0; right: 0;
+      height: 100vh; height: 100dvh;
+      width: min(80vw, 320px);
+      flex-direction: column; gap: 4px;
+      align-items: stretch;
+      background: var(--cream);
+      padding: 96px 30px 40px;
+      transform: translateX(105%);
+      transition: transform 0.35s ease;
+      box-shadow: -24px 0 60px rgba(28,26,22,0.14);
+      z-index: 120;
+    }
+    body.nav-open .nav-links { transform: translateX(0); }
+    .nav-links a {
+      font-size: 14px; letter-spacing: 0.14em;
+      padding: 16px 4px; display: block;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-cta {
+      text-align: center; margin-top: 16px;
+      padding: 15px 22px !important;
+      border-bottom: none !important;
+    }
+    body.nav-open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    body.nav-open .nav-toggle span:nth-child(2) { opacity: 0; }
+    body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     .hero { grid-template-columns: 1fr; }
     .hero-left { padding: 100px 28px 56px; }
     .hero-right { height: 70vw; }
@@ -794,7 +893,9 @@
     <li><a href="#contact">Contact</a></li>
     <li><a href="#contact" class="nav-cta">Book a call</a></li>
   </ul>
+  <button class="nav-toggle" aria-label="Open menu" onclick="document.body.classList.toggle('nav-open')"><span></span><span></span><span></span></button>
 </nav>
+<div class="nav-backdrop" onclick="document.body.classList.remove('nav-open')"></div>
 
 <section class="hero">
   <div class="hero-left">
@@ -1067,6 +1168,12 @@
     <a href="https://www.instagram.com/victoire.paris.guide" target="_blank">@victoire.paris.guide</a>
   </div>
 </footer>
+
+<script>
+  document.querySelectorAll('.nav-links a').forEach(function (a) {
+    a.addEventListener('click', function () { document.body.classList.remove('nav-open'); });
+  });
+</script>
 
 </body>
 </html>
