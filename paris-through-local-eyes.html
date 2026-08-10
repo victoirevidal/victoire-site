@@ -80,6 +80,7 @@ body.nav-open .nav-backdrop{opacity:1;pointer-events:auto;}
 .hero-elegant{background:radial-gradient(120% 120% at 70% 10%,#d8b98a 0%,#a9895c 38%,#6f5836 70%,#2b241a 100%);}
 .hero-local{background:radial-gradient(120% 120% at 30% 15%,#eadfca 0%,#cbb78f 40%,#9d8a63 72%,#3a3225 100%);}
 .hero-occupied{background:radial-gradient(120% 120% at 60% 12%,#6a6152 0%,#453f34 42%,#29241d 74%,#141210 100%);}
+.hero-nouvelle{background:radial-gradient(120% 120% at 40% 12%,#b7b49a 0%,#8a8a6e 42%,#5c5a44 74%,#2a2a1f 100%);}
 .placeholder-note{position:absolute;top:92px;right:24px;z-index:3;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(246,241,233,0.55);border:1px solid rgba(246,241,233,0.3);padding:5px 12px;border-radius:2px;background:rgba(20,18,15,0.25);}
 .back-link{position:absolute;top:92px;left:80px;z-index:3;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(246,241,233,0.8);text-decoration:none;transition:color .3s;}
 .back-link:hover{color:var(--cream);}
@@ -139,7 +140,7 @@ body.nav-open .nav-backdrop{opacity:1;pointer-events:auto;}
 .btn-secondary{font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:3px;transition:color .3s;}
 .btn-secondary:hover{color:var(--dark);}
 .more-walks{padding:90px 80px;border-top:1px solid var(--border);}
-.more-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:40px;}
+.more-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;}
 .more-card{border:1px solid var(--border);text-decoration:none;display:block;overflow:hidden;transition:transform .35s,box-shadow .35s;}
 .more-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(28,26,22,0.10);}
 .more-thumb{aspect-ratio:16/10;background-size:cover;background-position:center;position:relative;}
@@ -147,6 +148,7 @@ body.nav-open .nav-backdrop{opacity:1;pointer-events:auto;}
 .thumb-local{background:radial-gradient(120% 130% at 30% 15%,#eadfca,#cbb78f 45%,#9d8a63 100%);}
 .thumb-elegant{background:radial-gradient(120% 130% at 70% 15%,#d8b98a,#a9895c 45%,#6f5836 100%);}
 .thumb-occupied{background:radial-gradient(120% 130% at 60% 15%,#6a6152,#453f34 45%,#26221b 100%);}
+.thumb-nouvelle{background:radial-gradient(120% 130% at 40% 15%,#b7b49a,#8a8a6e 45%,#5c5a44 100%);}
 .more-body{padding:30px 38px 34px;}
 .more-card .mc-eyebrow{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--warm);margin-bottom:12px;display:block;}
 .more-card .mc-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;color:var(--dark);line-height:1.2;}
@@ -268,6 +270,10 @@ footer{padding:32px 24px;flex-direction:column;gap:12px;text-align:center;}
     <a class="more-card" href="paris-under-occupation.html">
       <div class="more-thumb" style="background:url('images/occupied-hero.jpg') center/cover;"></div>
       <div class="more-body"><span class="mc-eyebrow">History &amp; memory</span><div class="mc-title">Paris under Occupation</div><span class="mc-arrow">Discover this walk →</span></div>
+    </a>
+    <a class="more-card" href="la-nouvelle-athenes.html">
+      <div class="more-thumb thumb-nouvelle"></div>
+      <div class="more-body"><span class="mc-eyebrow">Art &amp; hidden Paris</span><div class="mc-title">La Nouvelle Athènes</div><span class="mc-arrow">Discover this walk →</span></div>
     </a>
   </div>
 </section>

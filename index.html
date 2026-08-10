@@ -374,9 +374,11 @@
   }
   .walks-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
   }
+  @media (max-width: 1080px) { .walks-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .walks-grid { grid-template-columns: 1fr; } }
   .walk-card {
     display: flex;
     flex-direction: column;
@@ -408,6 +410,7 @@
   .wc-elegant  { background: radial-gradient(120% 130% at 70% 15%, #d8b98a, #a9895c 45%, #6f5836 100%); }
   .wc-local    { background: radial-gradient(120% 130% at 30% 15%, #eadfca, #cbb78f 45%, #9d8a63 100%); }
   .wc-occupied { background: radial-gradient(120% 130% at 60% 15%, #6a6152, #453f34 45%, #26221b 100%); }
+  .wc-nouvelle { background: radial-gradient(120% 130% at 40% 15%, #b7b49a, #8a8a6e 45%, #5c5a44 100%); }
   .walk-card-body { padding: 32px 30px 34px; display: flex; flex-direction: column; flex-grow: 1; }
   .wc-eyebrow {
     font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
@@ -869,7 +872,6 @@
     .about-right { grid-column: 1; grid-row: auto; padding-top: 0; }
     .qualities { grid-template-columns: 1fr; }
     .walks { padding: 72px 28px; }
-    .walks-grid { grid-template-columns: 1fr; }
     .experiences { padding: 72px 28px; }
     .exp-grid { grid-template-columns: 1fr; }
     .exp-full { grid-column: 1; }
@@ -943,9 +945,9 @@
 <section class="walks" id="walks">
   <div class="walks-header">
     <span class="section-label">Signature walks</span>
-    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(40px,4vw,60px);font-weight:300;color:var(--dark);line-height:1.1;max-width:560px;">Three walks<br><em style="font-style:italic;color:var(--accent)">you'll never forget.</em></h2>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(40px,4vw,60px);font-weight:300;color:var(--dark);line-height:1.1;max-width:560px;">Four walks<br><em style="font-style:italic;color:var(--accent)">you'll never forget.</em></h2>
   </div>
-  <p class="walks-intro">Alongside the bespoke experiences below, these are three ready-made themed walks — each a story with its own arc, crafted and led entirely by me. Pick the one that speaks to you.</p>
+  <p class="walks-intro">Alongside the bespoke experiences below, these are four ready-made themed walks — each a story with its own arc, crafted and led entirely by me. Pick the one that speaks to you.</p>
   <div class="walks-grid">
 
     <a class="walk-card" href="elegant-paris.html">
@@ -980,6 +982,18 @@
         <p class="wc-sub">The Day the City Lost Its Freedom</p>
         <p class="wc-desc">The streets where ordinary Parisians lived through the Occupation. Not a war tour — a deeply human story of fear, courage, silence and the return of life, told exactly where it happened.</p>
         <div class="wc-meta">About 3 hours · On foot · Small groups</div>
+        <span class="wc-link">Discover this walk →</span>
+      </div>
+    </a>
+
+    <a class="walk-card" href="la-nouvelle-athenes.html">
+      <div class="walk-card-img wc-nouvelle"><span>Your photo here</span></div>
+      <div class="walk-card-body">
+        <span class="wc-eyebrow">Art &amp; hidden Paris</span>
+        <h3 class="wc-title">La Nouvelle Athènes</h3>
+        <p class="wc-sub">Hidden Courtyards &amp; the Artists' Quarter</p>
+        <p class="wc-desc">Just below Montmartre, the quarter Parisians nicknamed "New Athens" — hidden courtyards behind carriage gates, the streets where a generation of artists lived, and the Paris most visitors never see.</p>
+        <div class="wc-meta">Half a day · On foot · Small groups</div>
         <span class="wc-link">Discover this walk →</span>
       </div>
     </a>
