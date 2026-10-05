@@ -836,6 +836,21 @@
   .hero-subtitle { animation-delay: 0.46s; }
   .hero-actions { animation-delay: 0.55s; }
 
+  /* Slogan (non-heading) : mêmes styles et même animation décalée qu'avant */
+  .hero-slogan { margin: 0; }
+  .hero-left > .hero-slogan { animation: none; opacity: 1; }
+  .hero-slogan > span {
+    display: block;
+    opacity: 0;
+    animation-name: fadeUp;
+    animation-duration: 0.9s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+  }
+  /* H1 = sous-titre : rendu identique à l'ancienne tagline */
+  h1.hero-tagline { font-weight: inherit; line-height: 1.5; margin-top: 0; }
+  .hero-actions { flex-wrap: wrap; row-gap: 16px; }
+
   @media (max-width: 960px) {
     nav { padding: 18px 24px; }
     .nav-toggle { display: flex; }
@@ -904,16 +919,15 @@
 
 <section class="hero">
   <div class="hero-left">
-    <p class="hero-eyebrow">Paris · Cultural Insider & Private Host</p>
-    <h1 class="hero-title">Live like</h1>
-    <span class="hero-title-italic">locals do.</span>
-    <p class="hero-tagline">A Parisian perspective — thoughtfully shared.</p>
+    <p class="hero-eyebrow">Victoire Vidal · Private Paris Guide</p>
+    <p class="hero-slogan"><span class="hero-title">Live like</span> <span class="hero-title-italic">locals do.</span></p>
+    <h1 class="hero-tagline">Private walks &amp; tailor-made cultural experiences in Paris.</h1>
     <p class="hero-subtitle">
-      Born and raised in Paris, I offer refined, deeply personal experiences for international guests seeking more than a tour — an entry into the true rhythm of the city.
+      Born and raised in Paris, I create private cultural walks and bespoke experiences for international travellers. From art and history to neighbourhood life, each experience is shaped around your interests and pace, and led personally by me in English or French.
     </p>
     <div class="hero-actions">
-      <a href="https://calendly.com/guide-victoirevidal/15min" class="btn-primary">Book a discovery call →</a>
-      <a href="#experiences" class="btn-secondary">See experiences</a>
+      <a href="#walks" class="btn-primary">Explore private walks →</a>
+      <a href="https://calendly.com/guide-victoirevidal/15min" class="btn-secondary">Book a discovery call</a>
     </div>
   </div>
   <div class="hero-right">
