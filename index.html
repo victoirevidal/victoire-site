@@ -69,10 +69,13 @@
       "@type": "FAQPage",
       "@id": "https://victoirevidal.com/#faq",
       "mainEntity": [
-        { "@type": "Question", "name": "Do you speak English?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, fluently. All my experiences can be conducted entirely in English — and I'm used to working with international guests." } },
-        { "@type": "Question", "name": "Can you accommodate guests with mobility needs?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. My first guiding experience was with a guest living with Parkinson's. I adapt completely to every pace, every need — no question is too specific." } },
-        { "@type": "Question", "name": "How far in advance should I book?", "acceptedAnswer": { "@type": "Answer", "text": "Ideally 1–2 weeks ahead. This gives me the time to design something truly tailored to you — rather than something generic." } },
-        { "@type": "Question", "name": "Do you work with travel agencies and concierges?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. If you're a concierge or travel agent looking for a trusted Paris partner for your clients, get in touch directly — I'd love to discuss how we can work together." } }
+        {"@type": "Question", "name": "Are all your Paris experiences private?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Each experience is exclusively for you and your party, and personally designed and led by Victoire Vidal. You won’t be joining a group of other travellers."}},
+        {"@type": "Question", "name": "Can you create an entirely bespoke experience?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely. The walks featured on this website are examples of what we can explore together. We can adapt one of these themes, combine your interests or design an entirely different experience around you."}},
+        {"@type": "Question", "name": "Do you offer tours in English and French?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. All walks and private hosting experiences can be conducted in English or French."}},
+        {"@type": "Question", "name": "How much does a private experience cost?", "acceptedAnswer": {"@type": "Answer", "text": "Each experience is quoted individually, according to its duration, your party and the arrangements involved. You’ll receive a personalised proposal explaining the price, what is included and any additional costs before booking."}},
+        {"@type": "Question", "name": "Can you adapt a visit for guests with mobility needs?", "acceptedAnswer": {"@type": "Answer", "text": "Visits can be planned with a gentler pace, regular breaks and less walking. Please share your needs before booking so we can discuss a suitable route, transport options and any access limitations."}},
+        {"@type": "Question", "name": "How far in advance should I get in touch?", "acceptedAnswer": {"@type": "Answer", "text": "Ideally, get in touch one to two weeks before your visit, particularly for a bespoke experience. For requests at shorter notice, please contact me to check availability."}},
+        {"@type": "Question", "name": "Do you work with travel agencies and concierges?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. I work with travel advisors, agencies and concierges to create private Paris experiences for their clients. Please email guide@victoirevidal.com to discuss your brief, agency rates and booking arrangements."}}
       ]
     }
   ]
@@ -774,7 +777,7 @@
     font-size: 22px;
     font-weight: 400;
     color: var(--cream);
-    margin-bottom: 12px;
+    margin-bottom: 0;
     line-height: 1.3;
   }
 
@@ -782,6 +785,36 @@
     font-size: 14px;
     line-height: 1.85;
     color: rgba(246,241,233,0.55);
+  }
+
+  /* FAQ accordéons — sans JavaScript, toutes les réponses restent ouvertes */
+  .faq-a { padding-top: 12px; }
+  .faq-a a { color: var(--warm); text-decoration: none; border-bottom: 1px solid rgba(201,169,127,0.4); }
+  .faq-toggle {
+    appearance: none; background: none; border: 0; margin: 0; padding: 0;
+    width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 24px;
+    font: inherit; color: inherit; line-height: inherit; letter-spacing: inherit; text-align: left; cursor: pointer;
+  }
+  .faq-toggle:focus-visible { outline: 1px solid var(--warm); outline-offset: 6px; }
+  .faq-icon { display: none; position: relative; flex: 0 0 14px; width: 14px; height: 14px; }
+  .faq-icon::before, .faq-icon::after {
+    content: ""; position: absolute; left: 0; top: 50%; width: 14px; height: 1px;
+    background: var(--warm); transition: transform 0.35s ease;
+  }
+  .faq-icon::after { transform: rotate(90deg); }
+  .faq-js .faq-icon { display: block; }
+  .faq-js .faq-item.is-open .faq-icon::after { transform: rotate(0deg); }
+  .faq-js .faq-panel {
+    display: grid; grid-template-rows: 0fr; visibility: hidden;
+    transition: grid-template-rows 0.35s ease, visibility 0s linear 0.35s;
+  }
+  .faq-js .faq-item.is-open .faq-panel {
+    grid-template-rows: 1fr; visibility: visible;
+    transition: grid-template-rows 0.35s ease, visibility 0s;
+  }
+  .faq-panel-inner { overflow: hidden; min-height: 0; }
+  @media (prefers-reduced-motion: reduce) {
+    .faq-js .faq-panel, .faq-js .faq-item.is-open .faq-panel, .faq-icon::before, .faq-icon::after { transition: none; }
   }
 
   footer {
@@ -1152,27 +1185,39 @@
   </div>
 </section>
 
-<section class="faq">
+<section class="faq" id="faq">
   <div class="faq-header">
     <span class="section-label">FAQ</span>
-    <h2 class="faq-title">A few things<br>people <em>ask.</em></h2>
+    <h2 class="faq-title">Planning your private Paris <em>experience.</em></h2>
   </div>
   <div class="faq-list">
-    <div class="faq-item">
-      <p class="faq-q">Do you speak English?</p>
-      <p class="faq-a">Yes, fluently. All my experiences can be conducted entirely in English — and I'm used to working with international guests.</p>
+    <div class="faq-item is-open">
+      <h3 class="faq-q"><button type="button" class="faq-toggle" id="faq-q1" aria-expanded="true" aria-controls="faq-a1"><span class="faq-q-text">Are all your Paris experiences private?</span><span class="faq-icon" aria-hidden="true"></span></button></h3>
+      <div class="faq-panel" id="faq-a1" role="region" aria-labelledby="faq-q1"><div class="faq-panel-inner"><p class="faq-a">Yes. Each experience is exclusively for you and your party, and personally designed and led by Victoire Vidal. You won’t be joining a group of other travellers.</p></div></div>
     </div>
-    <div class="faq-item">
-      <p class="faq-q">Can you accommodate guests with mobility needs?</p>
-      <p class="faq-a">Absolutely. My first guiding experience was with a guest living with Parkinson's. I adapt completely to every pace, every need — no question is too specific.</p>
+    <div class="faq-item is-open">
+      <h3 class="faq-q"><button type="button" class="faq-toggle" id="faq-q2" aria-expanded="true" aria-controls="faq-a2"><span class="faq-q-text">Can you create an entirely bespoke experience?</span><span class="faq-icon" aria-hidden="true"></span></button></h3>
+      <div class="faq-panel" id="faq-a2" role="region" aria-labelledby="faq-q2"><div class="faq-panel-inner"><p class="faq-a">Absolutely. The walks featured on this website are examples of what we can explore together. We can adapt one of these themes, combine your interests or design an entirely different experience around you.</p></div></div>
     </div>
-    <div class="faq-item">
-      <p class="faq-q">How far in advance should I book?</p>
-      <p class="faq-a">Ideally 1–2 weeks ahead. This gives me the time to design something truly tailored to you — rather than something generic.</p>
+    <div class="faq-item is-open">
+      <h3 class="faq-q"><button type="button" class="faq-toggle" id="faq-q3" aria-expanded="true" aria-controls="faq-a3"><span class="faq-q-text">Do you offer tours in English and French?</span><span class="faq-icon" aria-hidden="true"></span></button></h3>
+      <div class="faq-panel" id="faq-a3" role="region" aria-labelledby="faq-q3"><div class="faq-panel-inner"><p class="faq-a">Yes. All walks and private hosting experiences can be conducted in English or French.</p></div></div>
     </div>
-    <div class="faq-item">
-      <p class="faq-q">Do you work with travel agencies and concierges?</p>
-      <p class="faq-a">Yes. If you're a concierge or travel agent looking for a trusted Paris partner for your clients, get in touch directly — I'd love to discuss how we can work together.</p>
+    <div class="faq-item is-open">
+      <h3 class="faq-q"><button type="button" class="faq-toggle" id="faq-q4" aria-expanded="true" aria-controls="faq-a4"><span class="faq-q-text">How much does a private experience cost?</span><span class="faq-icon" aria-hidden="true"></span></button></h3>
+      <div class="faq-panel" id="faq-a4" role="region" aria-labelledby="faq-q4"><div class="faq-panel-inner"><p class="faq-a">Each experience is quoted individually, according to its duration, your party and the arrangements involved. You’ll receive a personalised proposal explaining the price, what is included and any additional costs before booking.</p></div></div>
+    </div>
+    <div class="faq-item is-open">
+      <h3 class="faq-q"><button type="button" class="faq-toggle" id="faq-q5" aria-expanded="true" aria-controls="faq-a5"><span class="faq-q-text">Can you adapt a visit for guests with mobility needs?</span><span class="faq-icon" aria-hidden="true"></span></button></h3>
+      <div class="faq-panel" id="faq-a5" role="region" aria-labelledby="faq-q5"><div class="faq-panel-inner"><p class="faq-a">Visits can be planned with a gentler pace, regular breaks and less walking. Please share your needs before booking so we can discuss a suitable route, transport options and any access limitations.</p></div></div>
+    </div>
+    <div class="faq-item is-open">
+      <h3 class="faq-q"><button type="button" class="faq-toggle" id="faq-q6" aria-expanded="true" aria-controls="faq-a6"><span class="faq-q-text">How far in advance should I get in touch?</span><span class="faq-icon" aria-hidden="true"></span></button></h3>
+      <div class="faq-panel" id="faq-a6" role="region" aria-labelledby="faq-q6"><div class="faq-panel-inner"><p class="faq-a">Ideally, get in touch one to two weeks before your visit, particularly for a bespoke experience. For requests at shorter notice, please contact me to check availability.</p></div></div>
+    </div>
+    <div class="faq-item is-open">
+      <h3 class="faq-q"><button type="button" class="faq-toggle" id="faq-q7" aria-expanded="true" aria-controls="faq-a7"><span class="faq-q-text">Do you work with travel agencies and concierges?</span><span class="faq-icon" aria-hidden="true"></span></button></h3>
+      <div class="faq-panel" id="faq-a7" role="region" aria-labelledby="faq-q7"><div class="faq-panel-inner"><p class="faq-a">Yes. I work with travel advisors, agencies and concierges to create private Paris experiences for their clients. Please email <a href="mailto:guide@victoirevidal.com">guide@victoirevidal.com</a> to discuss your brief, agency rates and booking arrangements.</p></div></div>
     </div>
   </div>
 </section>
@@ -1190,6 +1235,22 @@
   document.querySelectorAll('.nav-links a').forEach(function (a) {
     a.addEventListener('click', function () { document.body.classList.remove('nav-open'); });
   });
+
+  (function () {
+    var faq = document.querySelector('.faq');
+    if (!faq) return;
+    faq.classList.add('faq-js');
+    faq.querySelectorAll('.faq-toggle').forEach(function (btn) {
+      var item = btn.closest('.faq-item');
+      btn.setAttribute('aria-expanded', 'false');
+      item.classList.remove('is-open');
+      btn.addEventListener('click', function () {
+        var open = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!open));
+        item.classList.toggle('is-open', !open);
+      });
+    });
+  })();
 </script>
 
 </body>
