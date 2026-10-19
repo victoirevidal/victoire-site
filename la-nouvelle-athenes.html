@@ -233,6 +233,27 @@ footer{padding:32px 24px;flex-direction:column;gap:12px;text-align:center;}
 .more-card .mc-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--accent);margin-top:6px;display:block;}
 .more-card .mc-desc{font-size:14px;line-height:1.75;color:var(--muted);margin-top:14px;}
 .more-card{display:flex;flex-direction:column;}.more-body{display:flex;flex-direction:column;flex-grow:1;}.more-card .mc-arrow{margin-top:auto;padding-top:18px;}
+
+/* --- layout v2 --- */
+.idea-inner{align-items:stretch;}
+.idea-left{display:flex;flex-direction:column;}
+.idea-photo{margin:0;padding-top:40px;}
+.idea-photo img{display:block;width:100%;height:auto;}
+.expect-grid{grid-template-columns:repeat(3,1fr);gap:12px;max-width:1120px;}
+.expect-cell{padding:26px 28px;}
+.expect-k{margin-bottom:10px;}
+.expect-v{font-size:20px;line-height:1.35;}
+.mosaic2{position:relative;width:100%;max-width:1080px;margin:0 auto;}
+.mosaic2 figure{position:absolute;margin:0;overflow:hidden;background:#2a2620;}
+.mosaic2 img{display:block;width:100%;height:100%;transition:transform .9s ease;}
+.mosaic2 figure:hover img{transform:scale(1.03);}
+.mosaic2.no-js{position:static;display:flex;flex-wrap:wrap;gap:12px;}
+.mosaic2.no-js figure{position:static;flex:1 1 260px;}
+@media(prefers-reduced-motion:reduce){.mosaic2 img{transition:none;}}
+@media(max-width:1100px){.expect-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:960px){.idea-photo{margin-top:0;padding-top:28px;}.expect-grid{grid-template-columns:1fr;}.expect-cell{padding:22px 24px;}}
+.glimpse{margin-top:0;margin-bottom:84px;}
+@media(max-width:960px){.glimpse{margin-bottom:56px;}}
 </style>
 </head>
 <body>
@@ -290,20 +311,21 @@ footer{padding:32px 24px;flex-direction:column;gap:12px;text-align:center;}
 
 <section class="byend">
   <div class="wrap-wide">
+    <div class="glimpse">
+      <span class="section-label">A glimpse</span>
+      <div class="mosaic2 no-js" data-desktop='{"h": [0, 1, 2]}' data-mobile='{"v": [{"h": [0, 1]}, 2]}'>
+        <figure data-r="0.7500"><img src="images/nouvelle-1.jpg" alt="A hidden planted square with a fountain in Paris" loading="lazy"></figure>
+        <figure data-r="0.7500"><img src="images/nouvelle-2.jpg" alt="An ornate sculpted Parisian façade" loading="lazy"></figure>
+        <figure data-r="0.7500"><img src="images/nouvelle-3.jpg" alt="A grand carriage gate framed by a climbing vine in Paris" loading="lazy"></figure>
+      </div>
+    </div>
     <span class="section-label">By the end</span>
     <ul class="youll2">
       <li><span class="n">I</span><span class="t">You'll step through carriage gates into courtyards most visitors never see.</span></li>
       <li><span class="n">II</span><span class="t">You'll walk the streets where a generation of artists lived and worked.</span></li>
       <li><span class="n">III</span><span class="t">You'll learn to read a Parisian façade — and never un-see it.</span></li>
     </ul>
-    <div class="glimpse">
-      <span class="section-label">A glimpse</span>
-      <div class="gallery">
-        <img src="images/nouvelle-1.jpg" alt="A hidden planted square with a fountain in Paris" loading="lazy">
-        <img src="images/nouvelle-2.jpg" alt="An ornate sculpted Parisian façade" loading="lazy">
-        <img src="images/nouvelle-3.jpg" alt="A grand carriage gate framed by a climbing vine in Paris" loading="lazy">
-      </div>
-    </div>
+
   </div>
 </section>
 
@@ -359,6 +381,36 @@ footer{padding:32px 24px;flex-direction:column;gap:12px;text-align:center;}
   document.querySelectorAll('.nav-links a').forEach(function (a) {
     a.addEventListener('click', function () { document.body.classList.remove('nav-open'); });
   });
+</script>
+
+
+<script>
+(function () {
+  var GAP = 12;
+  function m(n, R) {
+    if (typeof n === 'number') return { A: R[n], B: 0 };
+    var k = n.h || n.v, c = k.map(function (x) { return m(x, R); });
+    if (n.h) return { A: c.reduce(function (s, x) { return s + x.A; }, 0), B: c.reduce(function (s, x) { return s + x.B; }, 0) + GAP * (c.length - 1) };
+    var S = c.reduce(function (s, x) { return s + 1 / x.A; }, 0);
+    return { A: 1 / S, B: (c.reduce(function (s, x) { return s + x.B / x.A; }, 0) - GAP * (c.length - 1)) / S };
+  }
+  function p(n, x, y, w, R, F) {
+    var q = m(n, R), h = (w - q.B) / q.A;
+    if (typeof n === 'number') { var f = F[n].style; f.left = x + 'px'; f.top = y + 'px'; f.width = w + 'px'; f.height = h + 'px'; return h; }
+    if (n.h) { n.h.forEach(function (c) { var cq = m(c, R), cw = cq.A * h + cq.B; p(c, x, y, cw, R, F); x += cw + GAP; }); }
+    else { n.v.forEach(function (c) { var ch = p(c, x, y, w, R, F); y += ch + GAP; }); }
+    return h;
+  }
+  function run() {
+    document.querySelectorAll('.mosaic2').forEach(function (el) {
+      var F = el.querySelectorAll('figure'), R = [].map.call(F, function (f) { return parseFloat(f.getAttribute('data-r')); });
+      var t = JSON.parse(el.getAttribute(window.innerWidth < 700 ? 'data-mobile' : 'data-desktop'));
+      el.classList.remove('no-js');
+      el.style.height = p(t, 0, 0, el.clientWidth, R, F) + 'px';
+    });
+  }
+  run(); window.addEventListener('resize', run);
+})();
 </script>
 
 </body>

@@ -254,6 +254,27 @@ footer{padding:32px 24px;flex-direction:column;gap:12px;text-align:center;}
 .more-card .mc-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--accent);margin-top:6px;display:block;}
 .more-card .mc-desc{font-size:14px;line-height:1.75;color:var(--muted);margin-top:14px;}
 .more-card{display:flex;flex-direction:column;}.more-body{display:flex;flex-direction:column;flex-grow:1;}.more-card .mc-arrow{margin-top:auto;padding-top:18px;}
+
+/* --- layout v2 --- */
+.idea-inner{align-items:stretch;}
+.idea-left{display:flex;flex-direction:column;}
+.idea-photo{margin:0;padding-top:40px;}
+.idea-photo img{display:block;width:100%;height:auto;object-fit:cover;object-position:var(--pos,50% 50%);}
+.expect-grid{grid-template-columns:repeat(3,1fr);gap:12px;max-width:1120px;}
+.expect-cell{padding:26px 28px;}
+.expect-k{margin-bottom:10px;}
+.expect-v{font-size:20px;line-height:1.35;}
+.mosaic2{position:relative;width:100%;max-width:1080px;margin:0 auto;}
+.mosaic2 figure{position:absolute;margin:0;overflow:hidden;background:#2a2620;}
+.mosaic2 img{display:block;width:100%;height:100%;transition:transform .9s ease;}
+.mosaic2 figure:hover img{transform:scale(1.03);}
+.mosaic2.no-js{position:static;display:flex;flex-wrap:wrap;gap:12px;}
+.mosaic2.no-js figure{position:static;flex:1 1 260px;}
+@media(prefers-reduced-motion:reduce){.mosaic2 img{transition:none;}}
+@media(max-width:1100px){.expect-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:960px){.idea-photo{margin-top:0;padding-top:28px;}.expect-grid{grid-template-columns:1fr;}.expect-cell{padding:22px 24px;}}
+.glimpse{margin-top:0;margin-bottom:84px;}
+@media(max-width:960px){.glimpse{margin-bottom:56px;}}
 </style>
 </head>
 <body>
@@ -286,14 +307,16 @@ footer{padding:32px 24px;flex-direction:column;gap:12px;text-align:center;}
 
 <section class="idea">
   <div class="idea-inner">
-    <div>
+    <div class="idea-left">
       <span class="section-label">The idea</span>
       <h2 class="idea-h">The history of a city, through the lives of its <em>people.</em></h2>
+      <figure class="idea-photo" style="--pos:50% 30%"><img src="images/occupied-1.jpg" alt="The ornate façade of the Hôtel de Ville in Paris"></figure>
     </div>
     <div class="idea-body">
       <p class="idea-lead">History can leave its mark on the most ordinary places: an apartment building, a school, a shopfront or a familiar street.</p>
         <p>During the Occupation, Parisians continued to work, raise families and navigate daily life under restrictions, shortages and fear. But their experiences differed profoundly. Persecution, deportation, resistance and collaboration shaped this period, alongside the compromises and uncertainties of everyday survival.</p>
         <p>This walk connects the wider history with individual lives and the places where events unfolded. From the German Occupation to the Liberation, we explore how the city changed, what its streets preserve, and how Paris remembers this chapter today.</p>
+        <p>You'll walk streets where Parisians queued for bread, hid their neighbours, printed forbidden newspapers and, one August night in 1944, heard the bells of Notre-Dame announce the Liberation. Behind ordinary façades, the city still holds their stories, and this walk brings them back to life with care.</p>
     </div>
   </div>
 </section>
@@ -314,20 +337,20 @@ footer{padding:32px 24px;flex-direction:column;gap:12px;text-align:center;}
 
 <section class="byend">
   <div class="wrap-wide">
+    <div class="glimpse">
+      <span class="section-label">A glimpse</span>
+      <div class="mosaic2 no-js" data-desktop='{"h": [0, 1]}' data-mobile='{"v": [1, 0]}'>
+        <figure data-r="0.6627"><img src="images/occupied-2.jpg" alt="A bridge over the Seine beside the Louvre in Paris" loading="lazy"></figure>
+        <figure data-r="1.5000"><img src="images/occupied-3.jpg" alt="A quiet narrow street in historic Paris" loading="lazy"></figure>
+      </div>
+    </div>
     <span class="section-label">By the end</span>
     <ul class="youll2">
       <li><span class="n">I</span><span class="t">You’ll connect the history of the Occupation with places in present-day Paris.</span></li>
       <li><span class="n">II</span><span class="t">You’ll discover individual stories that reveal different experiences of life under occupation.</span></li>
       <li><span class="n">III</span><span class="t">You’ll gain a deeper understanding of how Paris remembers persecution, resistance and Liberation.</span></li>
     </ul>
-    <div class="glimpse">
-      <span class="section-label">A glimpse</span>
-      <div class="gallery">
-        <img src="images/occupied-1.jpg" alt="The ornate façade of the Hôtel de Ville in Paris" loading="lazy">
-        <img src="images/occupied-2.jpg" alt="A bridge over the Seine beside the Louvre in Paris" loading="lazy">
-        <img src="images/occupied-3.jpg" alt="A quiet narrow street in historic Paris" loading="lazy">
-      </div>
-    </div>
+
   </div>
 </section>
 
@@ -428,6 +451,54 @@ footer{padding:32px 24px;flex-direction:column;gap:12px;text-align:center;}
       });
     });
   })();
+</script>
+
+
+<script>
+(function () {
+  var GAP = 12;
+  function m(n, R) {
+    if (typeof n === 'number') return { A: R[n], B: 0 };
+    var k = n.h || n.v, c = k.map(function (x) { return m(x, R); });
+    if (n.h) return { A: c.reduce(function (s, x) { return s + x.A; }, 0), B: c.reduce(function (s, x) { return s + x.B; }, 0) + GAP * (c.length - 1) };
+    var S = c.reduce(function (s, x) { return s + 1 / x.A; }, 0);
+    return { A: 1 / S, B: (c.reduce(function (s, x) { return s + x.B / x.A; }, 0) - GAP * (c.length - 1)) / S };
+  }
+  function p(n, x, y, w, R, F) {
+    var q = m(n, R), h = (w - q.B) / q.A;
+    if (typeof n === 'number') { var f = F[n].style; f.left = x + 'px'; f.top = y + 'px'; f.width = w + 'px'; f.height = h + 'px'; return h; }
+    if (n.h) { n.h.forEach(function (c) { var cq = m(c, R), cw = cq.A * h + cq.B; p(c, x, y, cw, R, F); x += cw + GAP; }); }
+    else { n.v.forEach(function (c) { var ch = p(c, x, y, w, R, F); y += ch + GAP; }); }
+    return h;
+  }
+  function run() {
+    document.querySelectorAll('.mosaic2').forEach(function (el) {
+      var F = el.querySelectorAll('figure'), R = [].map.call(F, function (f) { return parseFloat(f.getAttribute('data-r')); });
+      var t = JSON.parse(el.getAttribute(window.innerWidth < 700 ? 'data-mobile' : 'data-desktop'));
+      el.classList.remove('no-js');
+      el.style.height = p(t, 0, 0, el.clientWidth, R, F) + 'px';
+    });
+  }
+  run(); window.addEventListener('resize', run);
+})();
+</script>
+
+
+<script>
+(function () {
+  function fit() {
+    var L = document.querySelector('.idea-left'), ph = L && L.querySelector('.idea-photo img');
+    if (!ph) return;
+    ph.style.height = '';
+    if (window.innerWidth <= 960 || !ph.naturalWidth) return;
+    var ps = document.querySelectorAll('.idea-body p'), last = ps[ps.length - 1];
+    var top = ph.getBoundingClientRect().top;
+    var avail = last.getBoundingClientRect().bottom - top;
+    var natural = L.clientWidth * ph.naturalHeight / ph.naturalWidth;
+    ph.style.height = Math.max(Math.min(avail, natural * 1.6), natural * 0.45) + 'px';
+  }
+  var im = document.querySelector('.idea-photo img'); if (im && !im.complete) im.addEventListener('load', fit); fit(); window.addEventListener('load', fit); window.addEventListener('resize', fit);
+})();
 </script>
 
 </body>
