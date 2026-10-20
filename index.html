@@ -688,6 +688,23 @@
     color: var(--muted);
   }
 
+
+  .rv-track { display: grid; }
+  .rv-slide { grid-area: 1 / 1; margin: 0; opacity: 0; visibility: hidden; transition: opacity .7s ease, visibility .7s; }
+  .rv-slide.is-active { opacity: 1; visibility: visible; }
+  .rv .quote-text { font-size: clamp(19px, 1.8vw, 25px); margin-bottom: 36px; }
+  .rv .quote-attr { flex-wrap: wrap; gap: 12px 20px; }
+  .rv-stars { color: var(--warm); letter-spacing: 0.12em; font-size: 13px; }
+  .rv-src { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); opacity: .8; }
+  .rv-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 48px; }
+  .rv-btn { width: 44px; height: 44px; border: 1px solid var(--border); background: transparent; color: var(--dark); font-size: 16px; cursor: pointer; transition: background .3s, color .3s; }
+  .rv-btn:hover, .rv-btn:focus-visible { background: var(--dark); color: var(--cream); outline: none; }
+  .rv-count { font-size: 12px; letter-spacing: 0.18em; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .rv-google { margin-left: auto; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 3px; }
+  .rv-google:hover { color: var(--dark); }
+  @media (prefers-reduced-motion: reduce) { .rv-slide { transition: none; } }
+  @media (max-width: 700px) { .rv-slide:not(.is-active) { display: none; } .rv-controls { margin-top: 36px; } .rv-google { margin-left: 0; } }
+
   /* CONTACT */
   .contact {
     padding: 112px 80px;
@@ -1196,17 +1213,68 @@
   <div class="how-cta"><a href="#contact" class="btn-primary">Plan my bespoke Paris experience →</a></div>
 </section>
 
-<section class="testimonial">
+<section class="testimonial" id="reviews">
   <div class="testimonial-inner">
-    <span class="section-label">A guest's words</span>
+    <span class="section-label">Guests’ words</span>
     <span class="quote-mark">"</span>
-    <blockquote class="quote-text">I can recommend Victoire without any reservations. She is a lovely person, and is very dependable in every way — from always being on time to finding the best things to do and how to do them, to helping me get around the city. She was invaluable to my enjoyment of Paris.</blockquote>
-    <div class="quote-attr">
-      <div class="quote-line"></div>
-      <span class="quote-author">Maria</span>
+    <div class="rv" aria-roledescription="carousel" aria-label="Guest reviews">
+      <div class="rv-track">
+      <figure class="rv-slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 6">
+        <blockquote class="quote-text">We had such a great afternoon with Victoire! Instead of just seeing the usual tourist sights, she showed us parts of Paris we would never have discovered on our own. We loved the covered passages, the local history, and of course the pastries! She was warm, knowledgeable, and happy to adapt the tour to our pace. It honestly felt more like exploring the city with a local friend than taking a guided tour. Highly recommend!</blockquote>
+        <figcaption class="quote-attr"><div class="quote-line"></div><span class="quote-author">Nelson de P.</span><span class="rv-stars" aria-label="5 out of 5 stars">★★★★★</span><span class="rv-src">Google review</span></figcaption>
+      </figure>
+      <figure class="rv-slide" role="group" aria-roledescription="slide" aria-label="2 of 6" aria-hidden="true">
+        <blockquote class="quote-text">Fantastic experience! Victoire was friendly, engaging and incredibly knowledgeable. We loved exploring places we would have walked right past without realizing how much history they held. The tour felt relaxed, personal and never rushed. We left with a completely different appreciation of Paris. Highly recommended!</blockquote>
+        <figcaption class="quote-attr"><div class="quote-line"></div><span class="quote-author">Theophile J.</span><span class="rv-stars" aria-label="5 out of 5 stars">★★★★★</span><span class="rv-src">Google review</span></figcaption>
+      </figure>
+      <figure class="rv-slide" role="group" aria-roledescription="slide" aria-label="3 of 6" aria-hidden="true">
+        <blockquote class="quote-text">We absolutely loved our tour with Victoire! She struck the perfect balance between history, local stories and discovering beautiful hidden places. Nothing felt rushed, and the tour was very personal and interactive. We asked lots of questions along the way and she always had interesting answers and great recommendations. It was one of those experiences that made us appreciate Paris in a completely different way. We wouldn’t hesitate to book another tour with her the next time we’re in the city.</blockquote>
+        <figcaption class="quote-attr"><div class="quote-line"></div><span class="quote-author">Marie J.</span><span class="rv-stars" aria-label="5 out of 5 stars">★★★★★</span><span class="rv-src">Google review</span></figcaption>
+      </figure>
+      <figure class="rv-slide" role="group" aria-roledescription="slide" aria-label="4 of 6" aria-hidden="true">
+        <blockquote class="quote-text">I can recommend Victoire without any reservations. She is a lovely person, and is very dependable in every way — from always being on time to finding the best things to do and how to do them, to helping me get around the city. She was invaluable to my enjoyment of Paris.</blockquote>
+        <figcaption class="quote-attr"><div class="quote-line"></div><span class="quote-author">Maria J.</span><span class="rv-src">Shared by email</span></figcaption>
+      </figure>
+      <figure class="rv-slide" role="group" aria-roledescription="slide" aria-label="5 of 6" aria-hidden="true">
+        <blockquote class="quote-text">My spouse and I met with many great guides during our month recently spent in France, but we were especially grateful for the expertise, talent and creativity of Victoire. She showed us around the many beautiful sights in Paris which we were able to visit through our walking tour. The wonderful vistas were superbly described by Victoire throughout the course of our visit. We look forward to returning to Paris to see different parts of that lovely city, inspired by Victoire’s wisdom and grace. Thank you, Victoire for this unforgettable time!</blockquote>
+        <figcaption class="quote-attr"><div class="quote-line"></div><span class="quote-author">Richard C.</span><span class="rv-stars" aria-label="5 out of 5 stars">★★★★★</span><span class="rv-src">Google review</span></figcaption>
+      </figure>
+      <figure class="rv-slide" role="group" aria-roledescription="slide" aria-label="6 of 6" aria-hidden="true">
+        <blockquote class="quote-text">I brought my two teenagers to Paris for the first time in the beginning of July. We had the pleasure of having Victoire as our guide for a couple of walking tours through the city. She has a very pleasant demeanor, was very informative, and comes with tons of good energy. We definitely recommend her if you want to see more of the city than just the touristy highlights, and learn from a true native Parisian.</blockquote>
+        <figcaption class="quote-attr"><div class="quote-line"></div><span class="quote-author">Dan D.</span><span class="rv-stars" aria-label="5 out of 5 stars">★★★★★</span><span class="rv-src">Google review</span></figcaption>
+      </figure>
+      </div>
+      <div class="rv-controls">
+        <button class="rv-btn" type="button" data-dir="-1" aria-label="Previous review">←</button>
+        <span class="rv-count" aria-live="polite"><span class="rv-cur">01</span> / 06</span>
+        <button class="rv-btn" type="button" data-dir="1" aria-label="Next review">→</button>
+        <a class="rv-google" href="https://share.google/4Smyxgw1OLZq0lUGS" target="_blank" rel="noopener">Read all reviews on Google →</a>
+      </div>
     </div>
   </div>
 </section>
+<script>
+(function(){
+  var root=document.querySelector('.rv'); if(!root) return;
+  var slides=root.querySelectorAll('.rv-slide'), cur=root.querySelector('.rv-cur'), i=0, timer=null;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function show(n){
+    slides[i].classList.remove('is-active'); slides[i].setAttribute('aria-hidden','true');
+    i=(n+slides.length)%slides.length;
+    slides[i].classList.add('is-active'); slides[i].removeAttribute('aria-hidden');
+    cur.textContent=(i+1<10?'0':'')+(i+1);
+  }
+  function start(){ if(reduce||timer) return; timer=setInterval(function(){show(i+1);},9000); }
+  function stop(){ clearInterval(timer); timer=null; }
+  root.querySelectorAll('.rv-btn').forEach(function(b){ b.addEventListener('click',function(){ stop(); show(i+ +b.dataset.dir); }); });
+  root.addEventListener('mouseenter',stop); root.addEventListener('mouseleave',start);
+  root.addEventListener('focusin',stop);
+  var x0=null;
+  root.addEventListener('touchstart',function(e){x0=e.touches[0].clientX; stop();},{passive:true});
+  root.addEventListener('touchend',function(e){ if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>40) show(i+(dx<0?1:-1)); x0=null; });
+  start();
+})();
+</script>
 
 <section class="contact" id="contact">
   <div class="contact-left">
