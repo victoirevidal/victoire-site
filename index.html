@@ -391,13 +391,19 @@
     max-width: 620px;
     margin-bottom: 60px;
   }
+  .walks-outro { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 40px; }
+  .walks-outro p { margin: 0; max-width: 560px; font-family: 'Cormorant Garamond', serif; font-size: clamp(22px, 2vw, 27px); font-style: italic; font-weight: 300; line-height: 1.4; color: var(--dark); }
+  .how-cta { margin-top: 56px; }
   .walks-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
   }
   @media (min-width: 1081px) {
-    .walks-grid { grid-template-columns: repeat(6, 1fr); }
+    .walks-outro { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 40px; }
+  .walks-outro p { margin: 0; max-width: 560px; font-family: 'Cormorant Garamond', serif; font-size: clamp(22px, 2vw, 27px); font-style: italic; font-weight: 300; line-height: 1.4; color: var(--dark); }
+  .how-cta { margin-top: 56px; }
+  .walks-grid { grid-template-columns: repeat(6, 1fr); }
     .walks-grid .walk-card { grid-column: span 2; }
     .walks-grid .walk-card:nth-child(4):nth-last-child(2) { grid-column: 2 / span 2; }
   }
@@ -1026,7 +1032,7 @@
         <h3 class="wc-title">Elegant Paris</h3>
         <p class="wc-sub">How Paris Invented the Art of Living</p>
         <p class="wc-desc">Royal squares, gilded galleries and the great boulevards, between the Louvre and the Opéra. How power slowly turned into pleasure, and how Paris made elegance a way of life.</p>
-        <div class="wc-meta">About 3 hours · On foot · Small groups</div>
+        <div class="wc-meta">About 3 hours · On foot · Up to 6 guests</div>
         <span class="wc-link">Discover this walk →</span>
       </div>
     </a>
@@ -1038,7 +1044,7 @@
         <h3 class="wc-title">Hidden Paris</h3>
         <p class="wc-sub">The City Behind the Façades</p>
         <p class="wc-desc">The Paris behind the shop windows: covered passages, forgotten workshops, an unexpected touch of Egypt and the street that fed the city for centuries.</p>
-        <div class="wc-meta">About 3½ hours · On foot · Small groups</div>
+        <div class="wc-meta">About 3½ hours · On foot · Up to 6 guests</div>
         <span class="wc-link">Discover this walk →</span>
       </div>
     </a>
@@ -1050,7 +1056,7 @@
         <h3 class="wc-title">Paris Through Local Eyes</h3>
         <p class="wc-sub">The Beauty Hidden in Everyday Life</p>
         <p class="wc-desc">A slow morning that isn't about monuments at all, but about learning to notice — the small things that separate someone passing through from someone who belongs. Stop seeing the postcard; start seeing the real city.</p>
-        <div class="wc-meta">About 3 hours · Morning walk · Small groups</div>
+        <div class="wc-meta">About 3 hours · Morning walk · Up to 6 guests</div>
         <span class="wc-link">Discover this walk →</span>
       </div>
     </a>
@@ -1062,7 +1068,7 @@
         <h3 class="wc-title">Paris under Occupation</h3>
         <p class="wc-sub">The Day the City Lost Its Freedom</p>
         <p class="wc-desc">The streets where ordinary Parisians lived through the Occupation. Not a war tour — a deeply human story of fear, courage, silence and the return of life, told exactly where it happened.</p>
-        <div class="wc-meta">About 3 hours · On foot · Small groups</div>
+        <div class="wc-meta">About 3 hours · On foot · Up to 6 guests</div>
         <span class="wc-link">Discover this walk →</span>
       </div>
     </a>
@@ -1074,11 +1080,15 @@
         <h3 class="wc-title">La Nouvelle Athènes</h3>
         <p class="wc-sub">Hidden Courtyards &amp; the Artists' Quarter</p>
         <p class="wc-desc">Just below Montmartre, the quarter Parisians nicknamed "New Athens" — hidden courtyards behind carriage gates, the streets where a generation of artists lived, and the Paris most visitors never see.</p>
-        <div class="wc-meta">Half a day · On foot · Small groups</div>
+        <div class="wc-meta">3 to 3½ hours · On foot · Up to 6 guests</div>
         <span class="wc-link">Discover this walk →</span>
       </div>
     </a>
 
+  </div>
+  <div class="walks-outro">
+    <p>Every walk here can be adapted to your interests, or we can start from a blank page.</p>
+    <a href="#contact" class="btn-primary">Plan my bespoke Paris experience →</a>
   </div>
 </section>
 
@@ -1183,6 +1193,7 @@
       <p class="how-step-desc">You receive a personalised proposal and quote. Once agreed and booked, I take care of the planning and personally welcome you for your experience.</p>
     </div>
   </div>
+  <div class="how-cta"><a href="#contact" class="btn-primary">Plan my bespoke Paris experience →</a></div>
 </section>
 
 <section class="testimonial">
